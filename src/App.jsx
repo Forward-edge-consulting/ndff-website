@@ -1,10 +1,13 @@
 import Navbar from "./Components/Navbar";
+import AppRoute from "./index.jsx";
 import "./App.css";
-function App(){
-  return(
-    <div>
-      <Navbar/>
-    </div>
+
+function App() {
+  return (
+    <>
+      <AppRoute />
+    </>
   );
 }
+
 export default App;

@@ -1,25 +1,29 @@
-nav{
+nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 6%;
   background-color: #ffffff;
 }
-.nav-links{
+
+.nav-links {
   display: flex;
   gap: 28px;
   align-items: center;
 }
-.nav-links a{
+
+.nav-links a {
   font-weight: 500;
   font-size: 15px;
   color: #111827;
   text-decoration: none;
 }
-.nav-links a :hover{
-  color: #2563eb;;
+
+.nav-links a:hover {
+  color: #2563eb;
 }
-.register-btn{
+
+.register-btn {
   padding: 12px 20px;
   border-radius: 6px;
   color: #ffffff;
