@@ -2,10 +2,41 @@ import Navbar from "../Components/Navbar";
 function Home(){
     return(
         <>
+        <Navbar/>
+            <section className="hero">
+                <article>
+                    <h1>NIGERIA DIGITAL FUTURE FORUM 2026</h1>
+                   <p className="tagline">Connect. Innovate. Transform.</p>
+                    <p>Driving Nigeria's Digital Future Through Innovation and Collaboration</p>
+                    <p>28–30 October 2026</p>
+                    <p>LCCI Conference and Exhibition Centre, Alausa, Ikeja, Lagos</p>
+                    
+                    <p>[ REGISTER TO ATTEND ] </p>
+                    <p>[ BECOME A SPONSOR ]</p>
 
-          <Navbar />
-            <p>Home page is active...</p>
-            <h1 className="text-3xl font-bold underline">SamAltman</h1>
+                    <p>Exhibit at NDFF</p>     <p>Explore the Programme</p>
+
+                </article>
+            </section>
+
+            <section>
+                <h1>Whats is NDFF?</h1>
+                <article>
+                    <p>The Nigeria Digital Future Forum brings together government, industry, academia, innovators, entrepreneurs, technology professionals and emerging talent to explore the technologies, partnerships and ideas shaping Nigeria's digital future.</p>
+                        <div>
+                            <div>Artificial Intelligence</div>
+                            <div>Cybersecurity</div>
+                            <div>Digital Transformation</div>
+                            <div>Emerging Technologies</div>
+                            <div>Digital Skills</div>
+                            <div>Innovation</div>
+                        </div>
+                </article>
+            </section>
+
+            <section>
+                    
+            </section>
         </>
     )
 }

@@ -1,13 +1,14 @@
-import Navbar from "./Components/Navbar";
 import AppRoute from "./index.jsx";
 import "./App.css";
+import Registration from "./pages/Registration.jsx";
 
 function App() {
-  return (
+  return(
     <>
-      <AppRoute />
-    </>
-  );
+    <AppRoute/>
+   <Registration/>
+   </>
+   );
 }
 
 export default App;
