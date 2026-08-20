@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import {ROUTES} from './route.js';
-import './index.css';
+// import './index.css';
 import Home from './pages/home.jsx';
 
 function AppRoute(){

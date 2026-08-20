@@ -1,5 +1,5 @@
 import AppRoute from './index.jsx';
-import './App.css'
+// import './App.css'
 
 function App() {
   return <AppRoute />
