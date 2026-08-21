@@ -1,8 +1,10 @@
+import Navbar from "../Components/Navbar";
 import './home.css';
 
 function Home(){
     return(
         <div>
+            <Navbar/>
             <section className='flex justify-center flex-col items-center mt-20'>
                 
                 <article className='w-[60%] text-center pt-10 flex flex-col justify-center'>
