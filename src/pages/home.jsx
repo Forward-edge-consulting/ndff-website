@@ -3,26 +3,50 @@ import './home.css';
 
 function Home(){
     return(
-        <>
-        <Navbar/>
-            <section className="hero">
-                <article>
-                    <h1>NIGERIA DIGITAL FUTURE FORUM 2026</h1>
-                   <p className="tagline">Connect. Innovate. Transform.</p>
-                    <p>Driving Nigeria's Digital Future Through Innovation and Collaboration</p>
-                    <p>28–30 October 2026</p>
-                    <p>LCCI Conference and Exhibition Centre, Alausa, Ikeja, Lagos</p>
+        <div>
+            <Navbar/>
+            <section className='flex justify-center flex-col items-center mt-20'>
+                
+                <article className='w-[60%] text-center pt-10 flex flex-col justify-center'>
                     
-                    <p>[ REGISTER TO ATTEND ] </p>
-                    <p>[ BECOME A SPONSOR ]</p>
+                    <div className='pt-3.5 pb-6 w-[38%] self-center text-center'>
+                        <p className='border-solid border-2 border-red-600 rounded-2xl'>Connect. Innovate. Transform.</p>
+                    </div>
+                    
+                    <div className='text-center self-center w-[95%] '>
+                        <h1 className='text-[4rem] font-mono leading-15'>NIGERIA DIGITAL FUTURE FORUM 2026</h1>
+                    </div>
 
-                    <p>Exhibit at NDFF</p>     <p>Explore the Programme</p>
+                    <div className='text-center self-center w-[60%] my-16'>
+                        <p>Driving Nigeria's Digital Future Through Innovation and Collaboration</p>
+                    </div>
+
+                    <div className='grid grid-cols-2'>
+                         <div>
+                            <p className='text-sm text-gray-500'>Date</p>
+                            <p>28–30 October 2026</p>
+                        </div>
+                    
+                        <div>
+                            <p className='text-sm text-gray-500'>Location</p>
+                            <p>LCCI Conference and Exhibition Centre</p>
+                            <p className='text-sm text-gray-700 font-bold'> Alausa, Ikeja, Lagos</p>
+                        </div>
+                    </div>
 
                 </article>
+                    <div className='flex gap-4 justify-center pt-10 pb-10 w-[110%]'>
+                        <button className='bg-green-500 pb-2.5 pt-2.5 pr-8 pl-8 rounded-3xl text-center'>Register to Attend</button>
+                        <button className='bg-green-500 pb-2.5 pt-2.5 pr-8 pl-8 rounded-3xl text-center'>Become a Sponsor</button>
+                        <button className='bg-green-500 pb-2.5 pt-2.5 pr-8 pl-8 rounded-3xl text-center'>Exhibit at NDFF</button>     
+                        <button className='bg-green-500 pb-2.5 pt-2.5 pr-8 pl-8 rounded-3xl text-center'>Explore Programme</button>
+                    </div>
             </section>
 
+
+
             <section>
-                <h1>Whats is NDFF?</h1>
+                <h1>What is NDFF?</h1>
                 <article>
                     <p>The Nigeria Digital Future Forum brings together government, industry, academia, innovators, entrepreneurs, technology professionals and emerging talent to explore the technologies, partnerships and ideas shaping Nigeria's digital future.</p>
                         {/* Make these six areas card/icons */}
@@ -173,7 +197,7 @@ function Home(){
                     </div>
                 {/* Then list the activities beneath each. */}
             </section>
-        </>
+        </div>
     )
 }
 

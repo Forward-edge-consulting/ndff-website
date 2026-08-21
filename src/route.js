@@ -1,4 +1,4 @@
 export const ROUTES = {
     HOME:'/Home',
-    NEW:'/New'
+    REGISTRATION:'/Registration'
 }
