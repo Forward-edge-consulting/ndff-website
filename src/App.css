@@ -1,0 +1,152 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 5%;
+  height: 70px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(1, 17, 67, 0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  width: 85px;
+  height: auto;
+  display: block;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav-links a {
+  color: #011143;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #2b9e05;
+}
+
+.register-btn {
+  padding: 9px 16px;
+  border-radius: 5px;
+  background-color: #2b9e05;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.register-btn:hover {
+  background-color: #011143;
+  color: #ffffff !important;
+}
+.hero {
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  padding: 60px 6%;
+  background-color: #011143;
+  color: #ffffff;
+}
+.hero article {
+  max-width: 750px;
+}
+.hero h1 {
+  font-size: 52px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+.hero .tagline {
+  font-size: 26px;
+  font-weight: 600;
+  color: #2b9e05;
+  margin-bottom: 15px;
+}
+.hero p {
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+.registration-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  color: #011143;
+}
+.registration-hero {
+  background: #011143;
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+.registration-hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.registration-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.pass-section h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+.pass-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+.pass-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #e2e6ef;
+  box-shadow: 0 4px 12px rgba(1, 17, 67, 0.08);
+}
+.pass-card h3 {
+  font-size: 21px;
+  margin-bottom: 15px;
+}
+.pass-card p {
+  color: #555;
+  line-height: 1.6;
+  min-height: 75px;
+}
+.pass-card button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 6px;
+  background: #2b9e05;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.pass-card button:hover {
+  background: #238304;
+}
+@media (max-width: 900px) {
+  .pass-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .registration-hero h1 {
+    font-size: 36px;
+  }
+
+  .pass-cards {
+    grid-template-columns: 1fr;
+  }
+}

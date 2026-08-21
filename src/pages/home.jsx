@@ -1,12 +1,14 @@
+import Navbar from "../Components/Navbar";
 import './home.css';
 
 function Home(){
     return(
         <>
-            <section>
+        <Navbar/>
+            <section className="hero">
                 <article>
                     <h1>NIGERIA DIGITAL FUTURE FORUM 2026</h1>
-                    <p>Connect. Innovate. Transform.</p>
+                   <p className="tagline">Connect. Innovate. Transform.</p>
                     <p>Driving Nigeria's Digital Future Through Innovation and Collaboration</p>
                     <p>28–30 October 2026</p>
                     <p>LCCI Conference and Exhibition Centre, Alausa, Ikeja, Lagos</p>
