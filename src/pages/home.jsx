@@ -5,6 +5,7 @@ function Home(){
     return(
         <div>
             <Navbar/>
+
             <section className='flex justify-center flex-col items-center mt-20'>
                 
                 <article className='w-[60%] text-center pt-10 flex flex-col justify-center'>
@@ -14,7 +15,7 @@ function Home(){
                     </div>
                     
                     <div className='text-center self-center w-[95%] '>
-                        <h1 className='text-[4rem] font-mono leading-15'>NIGERIA DIGITAL FUTURE FORUM 2026</h1>
+                        <h1 className='text-[#2b9e05] font-JimNightshade text-[5rem] leading-15'>NIGERIA DIGITAL FUTURE FORUM 2026</h1>
                     </div>
 
                     <div className='text-center self-center w-[60%] my-16'>
