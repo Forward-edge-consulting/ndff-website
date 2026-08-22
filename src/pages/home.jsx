@@ -10,8 +10,8 @@ function Home(){
                 
                 <article className='w-[60%] text-center pt-10 flex flex-col justify-center'>
                     
-                    <div className='pt-3.5 pb-8 w-[38%] self-center text-center'>
-                        <p className='border-solid border-2 border-[#2b9e05] rounded-2xl'>Connect. Innovate. Transform.</p>
+                    <div className='pt-3.5 pb-16 w-[38%] self-center text-center'>
+                        <p className=' text-[#2b9e05] border-solid border-2 border-[#6c9e5c] rounded-2xl bg-[#d9edd5]'>Connect. Innovate. Transform.</p>
                     </div>
                     
                     <div className='text-center self-center w-[95%] '>
@@ -25,22 +25,22 @@ function Home(){
                     <div className='grid grid-cols-2'>
                          <div>
                             <p className='text-sm text-gray-500'>Date</p>
-                            <p>28–30 October 2026</p>
+                            <p className="text-[#2b9e05]">28–30 October 2026</p>
                         </div>
                     
                         <div>
                             <p className='text-sm text-gray-500'>Location</p>
-                            <p>LCCI Conference and Exhibition Centre</p>
+                            <p className="text-[#2b9e05]">LCCI Conference and Exhibition Centre</p>
                             <p className='text-sm text-gray-700 font-bold'> Alausa, Ikeja, Lagos</p>
                         </div>
                     </div>
 
                 </article>
                     <div className='flex gap-4 justify-center pt-10 pb-10 w-[110%]'>
-                        <button className='bg-green-500 pb-2.5 pt-2.5 pr-8 pl-8 rounded-3xl text-center'>Register to Attend</button>
-                        <button className='bg-green-500 pb-2.5 pt-2.5 pr-8 pl-8 rounded-3xl text-center'>Become a Sponsor</button>
-                        <button className='bg-green-500 pb-2.5 pt-2.5 pr-8 pl-8 rounded-3xl text-center'>Exhibit at NDFF</button>     
-                        <button className='bg-green-500 pb-2.5 pt-2.5 pr-8 pl-8 rounded-3xl text-center'>Explore Programme</button>
+                        <button className='bg-[#2b9e05] text-white pb-2.5 pt-2.5 pr-8 pl-8 rounded-3xl text-center'>Register to Attend</button>
+                        <button className='bg-[#2b9e05] text-white pb-2.5 pt-2.5 pr-8 pl-8 rounded-3xl text-center'>Become a Sponsor</button>
+                        <button className='bg-[#2b9e05] text-white pb-2.5 pt-2.5 pr-8 pl-8 rounded-3xl text-center'>Exhibit at NDFF</button>     
+                        <button className='bg-[#2b9e05] text-white pb-2.5 pt-2.5 pr-8 pl-8 rounded-3xl text-center'>Explore Programme</button>
                     </div>
             </section>
 
