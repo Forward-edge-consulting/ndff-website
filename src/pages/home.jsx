@@ -10,12 +10,12 @@ function Home(){
                 
                 <article className='w-[60%] text-center pt-10 flex flex-col justify-center'>
                     
-                    <div className='pt-3.5 pb-6 w-[38%] self-center text-center'>
-                        <p className='border-solid border-2 border-red-600 rounded-2xl'>Connect. Innovate. Transform.</p>
+                    <div className='pt-3.5 pb-8 w-[38%] self-center text-center'>
+                        <p className='border-solid border-2 border-[#2b9e05] rounded-2xl'>Connect. Innovate. Transform.</p>
                     </div>
                     
                     <div className='text-center self-center w-[95%] '>
-                        <h1 className='text-[#2b9e05] font-JimNightshade text-[5rem] leading-15'>NIGERIA DIGITAL FUTURE FORUM 2026</h1>
+                        <h1 className='text-[#2b9e05] font-CinzelDecorative text-[5rem] leading-18'>NIGERIA DIGITAL FUTURE FORUM 2026</h1>
                     </div>
 
                     <div className='text-center self-center w-[60%] my-16'>
