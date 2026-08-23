@@ -1,18 +1,16 @@
-import { Routes, Route } from 'react-router-dom';
+import { Navigate, Route, Routes } from "react-router-dom";
+import Home from "./pages/home.jsx";
+import Registration from "./pages/Registration.jsx";
 
-import {ROUTES} from './route.js';
-// import './index.css';
-import Home from './pages/home.jsx';
-import Registration from './pages/Registration.jsx';
-
-function AppRoute(){
-    return (
-        <Routes>
-            <Route path={ROUTES.HOME} element={<Home/>}/>
-            <Route path='/' element={<Home/>}/>
-            <Route path={ROUTES.REGISTRATION} element={<Registration/>}/>
-        </Routes>
-    )
+function AppRoute() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Navigate to="/" replace />} />
+      <Route path="/registration" element={<Registration />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
 }
 
 export default AppRoute;

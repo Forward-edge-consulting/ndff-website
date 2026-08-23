@@ -1,10 +1,1 @@
-@import url('https://fonts.googleapis.com/css2?family=Jim+Nightshade&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
-
-@import "tailwindcss";
-
-@theme {
-    --font-JimNightshade: Jim Nightshade,"sans-serif";
-    --font-CinzelDecorative: Cinzel Decorative,"sans-serif"
-
-}
+/* Page-specific rules are consolidated in App.css so shared routes stay consistent. */

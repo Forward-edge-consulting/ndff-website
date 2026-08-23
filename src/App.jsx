@@ -1,13 +1,9 @@
 import AppRoute from "./index.jsx";
+import "./index.css";
 import "./App.css";
-import Registration from "./pages/Registration.jsx";
 
 function App() {
-  return(
-    <>
-    <AppRoute/>
-   </>
-   );
+  return <AppRoute />;
 }
 
 export default App;
