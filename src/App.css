@@ -988,6 +988,21 @@ form .button {
   align-self: flex-start;
 }
 
+form .button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .form-success {
   margin: 0;
   display: flex;
@@ -995,6 +1010,13 @@ form .button {
   gap: 8px;
   color: #8ce5b6;
   font-size: 0.83rem;
+}
+
+.form-error {
+  margin: 0;
+  color: #ffb4b4;
+  font-size: 0.83rem;
+  line-height: 1.5;
 }
 
 footer {
@@ -1192,6 +1214,10 @@ footer {
 }
 
 .registration-form-wrap form .button {
+  grid-column: 1 / -1;
+}
+
+.registration-form-wrap .form-error {
   grid-column: 1 / -1;
 }
 

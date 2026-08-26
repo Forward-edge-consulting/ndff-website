@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2 } from "lucide-react";
 import Navbar from "../Components/Navbar";
+import { createRegistration } from "../lib/api";
 
 const passes = [
   ["Government Delegate", "For public-sector officials and institutional representatives.", ["Forum access", "Government–industry dialogue", "Networking sessions"]],
@@ -15,11 +16,33 @@ const passes = [
 function Registration() {
   const [selected, setSelected] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState("");
 
-  function submit(event) {
+  async function submit(event) {
     event.preventDefault();
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    setSubmitting(true);
+    setSubmissionError("");
+
+    try {
+      await createRegistration({
+        pass_type: selected,
+        full_name: data.get("full_name"),
+        email: data.get("email"),
+        phone: data.get("phone"),
+        organisation: data.get("organisation"),
+        website: data.get("website"),
+      });
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (error) {
+      setSubmissionError(error.message || "Your registration could not be submitted. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -57,11 +80,13 @@ function Registration() {
               <div><p className="eyebrow">Register your interest</p><h2>{selected || "Choose a pass above"}</h2><p>Complete your details to receive ticket and payment information when the selected category opens.</p></div>
               <form onSubmit={submit}>
                 <input type="hidden" name="pass" value={selected} />
-                <label>Full name<input required placeholder="Your full name" /></label>
-                <label>Email address<input required type="email" placeholder="you@example.com" /></label>
-                <label>Phone number<input required type="tel" placeholder="+234" /></label>
-                <label>Organisation / institution<input placeholder="Organisation name" /></label>
-                <button className="button button-primary" type="submit" disabled={!selected}>Register interest <ArrowRight size={18} /></button>
+                <label>Full name<input name="full_name" required placeholder="Your full name" /></label>
+                <label>Email address<input name="email" required type="email" placeholder="you@example.com" /></label>
+                <label>Phone number<input name="phone" required type="tel" placeholder="+234" /></label>
+                <label>Organisation / institution<input name="organisation" placeholder="Organisation name" /></label>
+                <div className="form-honeypot" aria-hidden="true"><label>Website<input name="website" tabIndex="-1" autoComplete="off" /></label></div>
+                <button className="button button-primary" type="submit" disabled={!selected || submitting}>{submitting ? "Submitting..." : "Register interest"} <ArrowRight size={18} /></button>
+                {submissionError && <p className="form-error" role="alert">{submissionError}</p>}
               </form>
             </div>
           </section>

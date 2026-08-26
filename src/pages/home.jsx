@@ -6,6 +6,7 @@ import {
   Network, Radio, Rocket, ShieldCheck, Sparkles, Users,
 } from "lucide-react";
 import Navbar from "../Components/Navbar";
+import { createEnquiry } from "../lib/api";
 import heroImage from "../assets/ndff-conference-hero.png";
 import "./home.css";
 
@@ -48,7 +49,8 @@ function getCountdown() {
 function Home() {
   const [activeDay, setActiveDay] = useState(0);
   const [countdown, setCountdown] = useState(getCountdown);
-  const [sent, setSent] = useState(false);
+  const [enquiryStatus, setEnquiryStatus] = useState("idle");
+  const [enquiryError, setEnquiryError] = useState("");
   const countdownParts = useMemo(() => Object.entries(countdown), [countdown]);
 
   useEffect(() => {
@@ -56,10 +58,29 @@ function Home() {
     return () => window.clearInterval(timer);
   }, []);
 
-  function handleEnquiry(event) {
+  async function handleEnquiry(event) {
     event.preventDefault();
-    setSent(true);
-    event.currentTarget.reset();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    setEnquiryStatus("submitting");
+    setEnquiryError("");
+
+    try {
+      await createEnquiry({
+        full_name: data.get("name"),
+        email: data.get("email"),
+        organisation: data.get("organisation"),
+        enquiry_type: data.get("type"),
+        message: data.get("message"),
+        website: data.get("website"),
+      });
+      form.reset();
+      setEnquiryStatus("success");
+    } catch (error) {
+      setEnquiryError(error.message || "Your enquiry could not be sent. Please try again.");
+      setEnquiryStatus("error");
+    }
   }
 
   return (
@@ -201,10 +222,12 @@ function Home() {
             <div><p className="eyebrow eyebrow-light">Start a conversation</p><h2>How would you like to take part?</h2><p>Tell us what you are interested in and the NDFF team can route your enquiry appropriately.</p></div>
             <form onSubmit={handleEnquiry}>
               <div className="form-row"><label>Full name<input name="name" required placeholder="Your name" /></label><label>Email address<input name="email" type="email" required placeholder="you@organisation.com" /></label></div>
-              <div className="form-row"><label>Organisation<input name="organisation" placeholder="Organisation name" /></label><label>Enquiry type<select name="type" defaultValue=""><option value="" disabled>Select an option</option><option>Registration</option><option>Sponsorship</option><option>Exhibition</option><option>Partnership</option><option>Media</option><option>Innovation / Startup</option><option>Career & Skills</option><option>General enquiry</option></select></label></div>
+              <div className="form-row"><label>Organisation<input name="organisation" placeholder="Organisation name" /></label><label>Enquiry type<select name="type" defaultValue="" required><option value="" disabled>Select an option</option><option>Registration</option><option>Sponsorship</option><option>Exhibition</option><option>Partnership</option><option>Media</option><option>Innovation / Startup</option><option>Career & Skills</option><option>General enquiry</option></select></label></div>
               <label>Message<textarea name="message" required rows="4" placeholder="Tell us how you would like to participate" /></label>
-              <button className="button button-primary" type="submit">Send enquiry <ArrowRight size={18} /></button>
-              {sent && <p className="form-success" role="status"><Check size={18} /> Thank you. Your enquiry has been recorded.</p>}
+              <div className="form-honeypot" aria-hidden="true"><label>Website<input name="website" tabIndex="-1" autoComplete="off" /></label></div>
+              <button className="button button-primary" type="submit" disabled={enquiryStatus === "submitting"}>{enquiryStatus === "submitting" ? "Sending enquiry..." : "Send enquiry"} <ArrowRight size={18} /></button>
+              {enquiryStatus === "success" && <p className="form-success" role="status"><Check size={18} /> Thank you. Your enquiry has been sent to the NDFF team.</p>}
+              {enquiryStatus === "error" && <p className="form-error" role="alert">{enquiryError}</p>}
             </form>
           </div>
         </section>
