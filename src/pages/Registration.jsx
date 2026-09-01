@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2 } from "lucide-react";
 import Navbar from "../Components/Navbar";
@@ -18,9 +18,35 @@ function Registration() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState("");
+  const [selectionError, setSelectionError] = useState("");
+  const passSelectionRef = useRef(null);
+  const registrationFormRef = useRef(null);
+
+  function scrollTo(element) {
+    element?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function selectPass(name) {
+    setSelected(name);
+    setSelectionError("");
+    scrollTo(registrationFormRef.current);
+  }
+
+  function promptForPass() {
+    if (selected) return;
+
+    setSelectionError("Please select a pass to continue.");
+    scrollTo(passSelectionRef.current);
+  }
 
   async function submit(event) {
     event.preventDefault();
+
+    if (!selected) {
+      promptForPass();
+      return;
+    }
+
     const form = event.currentTarget;
     const data = new FormData(form);
 
@@ -66,17 +92,20 @@ function Registration() {
           </section>
         ) : (
           <section className="section registration-content">
-            <div className="container section-heading centered"><p className="eyebrow">Access categories</p><h2>Select your NDFF experience.</h2><p>Prices will be published after commercial approval.</p></div>
+            <div className="container section-heading centered pass-selection" ref={passSelectionRef}>
+              <p className="eyebrow">Access categories</p><h2>Select your NDFF experience.</h2><p>Prices will be published after commercial approval.</p>
+              {selectionError && <p className="pass-selection-error" role="alert">{selectionError}</p>}
+            </div>
             <div className="container pass-grid">
               {passes.map(([name, description, benefits]) => (
-                <button className={`pass-card ${selected === name ? "selected" : ""}`} type="button" key={name} onClick={() => setSelected(name)} aria-pressed={selected === name}>
+                <button className={`pass-card ${selected === name ? "selected" : ""}`} type="button" key={name} onClick={() => selectPass(name)} aria-pressed={selected === name}>
                   <div><span className="pass-status">{selected === name ? <CheckCircle2 size={22} /> : "Select"}</span><small>Pricing to be announced</small></div>
                   <h3>{name}</h3><p>{description}</p>
                   <ul>{benefits.map((benefit) => <li key={benefit}><Check size={16} />{benefit}</li>)}</ul>
                 </button>
               ))}
             </div>
-            <div className="container registration-form-wrap">
+            <div className="container registration-form-wrap" ref={registrationFormRef}>
               <div><p className="eyebrow">Register your interest</p><h2>{selected || "Choose a pass above"}</h2><p>Complete your details to receive ticket and payment information when the selected category opens.</p></div>
               <form onSubmit={submit}>
                 <input type="hidden" name="pass" value={selected} />
@@ -85,7 +114,7 @@ function Registration() {
                 <label>Phone number<input name="phone" required type="tel" placeholder="+234" /></label>
                 <label>Organisation / institution<input name="organisation" placeholder="Organisation name" /></label>
                 <div className="form-honeypot" aria-hidden="true"><label>Website<input name="website" tabIndex="-1" autoComplete="off" /></label></div>
-                <button className="button button-primary" type="submit" disabled={!selected || submitting}>{submitting ? "Submitting..." : "Register interest"} <ArrowRight size={18} /></button>
+                <button className="button button-primary" type="submit" disabled={submitting} onClick={promptForPass}>{submitting ? "Submitting..." : selected ? "Register interest" : "Choose a pass to continue"} <ArrowRight size={18} /></button>
                 {submissionError && <p className="form-error" role="alert">{submissionError}</p>}
               </form>
             </div>

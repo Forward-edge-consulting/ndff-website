@@ -38,12 +38,12 @@ const experiences = [
 ];
 
 const focusAreas = [
-  { icon: Bot, title: "Artificial Intelligence", text: "Explore responsible AI, practical adoption and the opportunities reshaping Nigerian industries." },
-  { icon: ShieldCheck, title: "Cybersecurity", text: "Strengthen digital trust through conversations on resilience, privacy and emerging threats." },
-  { icon: Building2, title: "Digital Transformation", text: "Discover how technology can improve public services, organisations and everyday experiences." },
-  { icon: Cpu, title: "Emerging Technologies", text: "See the new tools and infrastructure poised to influence Nigeria's next decade." },
-  { icon: GraduationCap, title: "Digital Skills", text: "Connect education, talent and industry to build a future-ready Nigerian workforce." },
-  { icon: Sparkles, title: "Innovation", text: "Meet the founders and ideas turning local challenges into scalable solutions." },
+  { icon: Bot, image: technologyAudienceImage, imageAlt: "Technology professional exploring artificial intelligence", title: "Artificial Intelligence", text: "Explore responsible AI, practical adoption and the opportunities reshaping Nigerian industries." },
+  { icon: ShieldCheck, image: businessAudienceImage, imageAlt: "Business professionals discussing digital security", title: "Cybersecurity", text: "Strengthen digital trust through conversations on resilience, privacy and emerging threats." },
+  { icon: Building2, image: governmentAudienceImage, imageAlt: "Public-sector leaders advancing digital transformation", title: "Digital Transformation", text: "Discover how technology can improve public services, organisations and everyday experiences." },
+  { icon: Cpu, image: innovationImage, imageAlt: "An emerging technology demonstration at the forum", title: "Emerging Technologies", text: "See the new tools and infrastructure poised to influence Nigeria's next decade." },
+  { icon: GraduationCap, image: studentAudienceImage, imageAlt: "Students developing practical digital skills", title: "Digital Skills", text: "Connect education, talent and industry to build a future-ready Nigerian workforce." },
+  { icon: Sparkles, image: founderAudienceImage, imageAlt: "A Nigerian founder presenting an innovative idea", title: "Innovation", text: "Meet the founders and ideas turning local challenges into scalable solutions." },
 ];
 
 const programme = [
@@ -182,9 +182,13 @@ function Home() {
             </figcaption>
           </figure>
           <div className="container focus-grid">
-            {focusAreas.map(({ icon: Icon, title, text }, index) => (
+            {focusAreas.map(({ icon: Icon, image, imageAlt, title, text }, index) => (
               <div className={`focus-item reveal reveal-delay-${(index % 3) + 1}`} key={title}>
-                <span>0{index + 1}</span><Icon size={25} /><strong>{title}</strong><p>{text}</p>
+                <div className="focus-media">
+                  <img src={image} alt={imageAlt} loading="lazy" />
+                  <span className="focus-number">0{index + 1}</span>
+                </div>
+                <div className="focus-body"><Icon size={25} /><strong>{title}</strong><p>{text}</p></div>
               </div>
             ))}
           </div>
